@@ -1,0 +1,90 @@
+create database schl;
+use schl;
+create table schl(name varchar(20),id int primary key,dept varchar(10));
+insert into schl values('chitti',1,'csd');
+insert into schl values('laari',2,'cse');
+insert into schl values('pushpa',3,'cst');
+insert into schl values('chandana',4,'ece');
+select *from schl;
+alter table schl add phno int;
+desc schl;
+select *from schl;
+update schl set phno=9876548979 where id=1;
+alter table schl modify phno bigint;
+update schl set phno=9876548979 where id=1;
+update schl set phno=9874857379 where id=2;
+update schl set phno=8243796179 where id=3;
+update schl set phno=7896542801 where id=4;
+select*from schl;
+alter table schl add email varchar(20);
+alter table schl rename column email to address;
+update schl set address='kadapa' where id =1;
+update schl set address='chittor' where id =2;
+update schl set address='hindupur' where id =3;
+update schl set address='punganur' where id =4;
+select *from schl;
+alter table schl drop column address;
+select *from schl;
+********************************************************************************************
+//Data Types
+
+create database std;
+use std;
+CREATE TABLE std (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(20) NOT NULL,
+    email VARCHAR(20) UNIQUE NOT NULL,
+    age INT,
+    city VARCHAR(10),
+    score DECIMAL(5,2) DEFAULT 0.00,
+    enroll DATE,
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+insert into std (id,name,email,age,city,score,enroll,is_active,created_at)values(1,'chitti','chinna@gmail.com',19,'plvd',85.0,'2026-06-20',true,'2026-09-20');
+insert into std (id,name,email,age,city,score,enroll,is_active,created_at)values(2,'laari','chitti@gmail.com',20,'tirupathi',89.30,'2026-06-15',true,'2026-10-10');
+insert into std (id,name,email,age,city,score,enroll,is_active,created_at)values(3'venni','venni@gmail.com',21,'chittor',79.30,'2026-06-25',true'2026-11-10');
+select *from std;
+select id,name,age,city from std;
+select distinct age from std;
+select distinct name from std;
+select *from std where city!='kadapa';
+select *from std where city='kadapa';
+select *from std where age>19 and score>80.00;
+select *from std where score between 75.0 and 80.0;
+select *from std where city in('mpl','kadapa');
+select *from std where name like 'chitti';
+select *from std where age is null;
+select *from std where age is not null;
+select *from std where name like "%i";
+select *from std where name like "v%";
+select *from std where name like "%h%";
+select *from std order by age asc;
+SET @name = 'Chitti';
+SELECT @name;
+select @age=20;
+select @age;
+select length(name) from std;
+select substr(name,1,4) from std;
+select substring(name,1,3) from std;
+select ceil(score),floor(score) from std;
+select abs(-89);
+select power(2,3);
+select mod(10,8);
+select date(enroll) from std;
+select datediff(now(),enroll) as days_since from std;
+select city,count(*) as total from std group by city;
+create database bussiness;
+use bussiness;
+create table bussiness(id int,name varchar(12), amount int);
+insert into bussiness values(1,"chitti",100000);
+insert into bussiness values(2,"laari",20000);
+insert into bussiness values(3,"venni",90000);
+insert into bussiness values(4,"raji",14000);
+insert into bussiness values(5,"akki",5000);
+select * from bussiness;
+select count(*) from bussiness;
+select max(amount) from bussiness;
+select min(amount)from bussiness;
+select avg(amount) from bussiness;
+select sum(amount) from bussiness;
